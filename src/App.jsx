@@ -4,6 +4,7 @@ import MenuBoutique from './component/MenuBoutique/MenuBoutique'
 import Boutiques from './component/Boutique/Boutiques'
 import articles from './services/catalogue.service'
 import BoutiqueContext from './context/BoutiqueContext'
+import Cart from './component/Cart/Cart'
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <MenuBoutique />
       </header>
       <main>
+        <Cart></Cart>
         <Boutiques catalogue={catalogue}></Boutiques>
 
       </main>
