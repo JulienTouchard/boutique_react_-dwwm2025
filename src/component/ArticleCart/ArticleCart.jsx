@@ -5,7 +5,7 @@ const styles = {
 }
 function ArticleCart(props) {
   const boutiqueContext = useContext(BoutiqueContext);
-  const values = boutiqueContext.catalogue[props.id];
+  const values = boutiqueContext.catalogue[props.item.id];
   return (
     <div style={styles.articles}>
       <div style={{ maxWidth: 50 }}><img src={values.url}/></div>
@@ -13,8 +13,8 @@ function ArticleCart(props) {
       <div>{values.price}</div>
       <div style={{ display: 'flex', justifyContent: 'space-between', width:100 }}>
         <div>-</div>
-        <div>?</div>
-        <div>+</div>
+        <div>{props.item.qte}</div>
+        <div onClick={()=>boutiqueContext.addCart(props.item.id)}>+</div>
       </div>
       <div>Total : {"??"}</div>
     </div>

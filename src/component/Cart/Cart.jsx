@@ -8,7 +8,7 @@ const Cart = () => {
         return (
             <div>
                 {
-                   boutiqueContext.cart.map((value,index)=><ArticleCart key={index} id={value}/>)
+                   boutiqueContext.cart.map((value,index)=><ArticleCart key={index} item={value}/>)
                 }
             </div>
         )
