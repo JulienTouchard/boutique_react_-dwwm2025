@@ -9,7 +9,7 @@ import BoutiqueContext from '../../context/BoutiqueContext';
 
 
 const style = {
-  styleCard: { maxWidth: "100%", marginTop: ".5rem", minHeight:740 },
+  styleCard: { width: "100%", marginTop: ".5rem", minHeight:740 },
   styleCardMedia: { height: 450 }
 }
 export default function BoutiqueCard(props) {

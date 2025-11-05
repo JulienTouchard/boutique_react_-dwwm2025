@@ -19,6 +19,7 @@ function App() {
         return value;
       })
       setCatalogue(catalogueTmp);
+
     }
   }
   return (
@@ -33,7 +34,6 @@ function App() {
       <main>
         <Cart></Cart>
         <Boutiques catalogue={catalogue}></Boutiques>
-
       </main>
       <footer></footer>
     </BoutiqueContext.Provider>
