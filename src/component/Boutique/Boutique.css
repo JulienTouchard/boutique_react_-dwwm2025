@@ -1,0 +1,7 @@
+.Boutique{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90vw;
+    margin: 1rem auto;
+    justify-content: space-between;
+}
