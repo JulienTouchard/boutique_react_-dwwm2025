@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import CheckroomIcon from '@mui/icons-material/Checkroom';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import BoutiqueContext from '../../context/BoutiqueContext';
 
 const pages = ['Home', 'Panier'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -19,6 +21,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function MenuBoutique() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+ const boutiqueContext = React.useContext(BoutiqueContext); 
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -85,11 +88,13 @@ function MenuBoutique() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page) => {
+                return(
+                <MenuItem key={page} onClick={handleCloseNavMenu }>
                   <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
                 </MenuItem>
-              ))}
+              )})}
+              
             </Menu>
           </Box>
           <CheckroomIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -124,6 +129,9 @@ function MenuBoutique() {
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
+              <IconButton onClick={boutiqueContext.showHideCart}>
+                  <ShoppingBagIcon></ShoppingBagIcon>
+                </IconButton>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>

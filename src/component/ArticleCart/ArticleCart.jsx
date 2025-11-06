@@ -18,7 +18,7 @@ function ArticleCart(props) {
         <div onClick={()=>boutiqueContext.addCart(props.item.id)}>+</div>
         <div onClick={()=>boutiqueContext.removeAll(props.item.id)}><DeleteIcon/></div>
       </div>
-      <div>Total : {"??"}</div>
+      <div>Total : {props.item.qte*values.price} $</div>
     </div>
   )
 }

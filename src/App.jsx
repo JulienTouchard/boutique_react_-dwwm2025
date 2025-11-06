@@ -8,8 +8,11 @@ import Cart from './component/Cart/Cart'
 
 
 function App() {
+  // definitions de mes states
   const [catalogue, setCatalogue] = useState(articles);
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
+  const [displayCart, setDisplayCart] = useState(false);
+  // definitions de mes fonctions
   const addCart = (id) => {
     if (catalogue[id].qte > 0) {
       const catalogueTmp = catalogue.map((value, index) => {
@@ -54,11 +57,11 @@ function App() {
     // dont la qte === 1
     let deleteIndex = undefined;
     // je copie mon tableau cart dans un nouveau
-    const cartTmp = cart.map((value,index)=>{
+    const cartTmp = cart.map((value, index) => {
       // si l'entrée a supprimer existe dans mon tableau
-      if(value.id === id){
+      if (value.id === id) {
         // si sa qte est superieur à 1
-        if(value.qte > 1){
+        if (value.qte > 1) {
           // je la decremente
           value.qte--
         } else { // si elle est au moins egale a 1
@@ -70,22 +73,22 @@ function App() {
       return value;
     })
     // fin de boucle et suppression d'une entrée egale à 1 si elle existe
-    if( deleteIndex !== undefined){
-      cartTmp.splice(deleteIndex,1)
+    if (deleteIndex !== undefined) {
+      cartTmp.splice(deleteIndex, 1)
     }
     // set de mon tableau modifier dans cart
     setCart(cartTmp);
   }
-  const removeAll = (id)=>{
-    console.log("jshdgjhsqg",id)
+  const removeAll = (id) => {
+    console.log("jshdgjhsqg", id)
     //let trouve = catalogue.find((value)=>value.id === id);
-    let indexDeleteCart = cart.findIndex((value)=>value.id === id)
+    let indexDeleteCart = cart.findIndex((value) => value.id === id)
     //console.log(trouve.id,trouve.qte)
     console.log(indexDeleteCart)
     //traitement catalogue
     let qteTmp = cart[indexDeleteCart].qte;
-    const catalogueTmp = catalogue.map((value,index)=>{
-      if(value.id === id){
+    const catalogueTmp = catalogue.map((value, index) => {
+      if (value.id === id) {
         value.qte += qteTmp;
       }
       return value
@@ -93,11 +96,14 @@ function App() {
 
     setCatalogue(catalogueTmp);
     //traitement cart
-    const cartTmp = cart.map((value)=>{
+    const cartTmp = cart.map((value) => {
       return value
     });
-    cartTmp.splice(indexDeleteCart,1);
-    setCart(cartTmp); 
+    cartTmp.splice(indexDeleteCart, 1);
+    setCart(cartTmp);
+  }
+  const showHideCart = () => {
+    setDisplayCart(!displayCart);
   }
   return (
     <BoutiqueContext.Provider value={{
@@ -105,13 +111,15 @@ function App() {
       cart,
       addCart: addCart,
       removeFromCart: removeFromCart,
-      removeAll: removeAll
+      removeAll: removeAll,
+      showHideCart: showHideCart
     }}>
       <header>
         <MenuBoutique />
       </header>
       <main>
-        <Cart></Cart>
+        {/* displayCart ? <Cart /> : <></>*/}
+        {displayCart && <Cart />}
         <Boutiques catalogue={catalogue}></Boutiques>
       </main>
       <footer></footer>
