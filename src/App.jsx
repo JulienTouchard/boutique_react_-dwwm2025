@@ -76,12 +76,36 @@ function App() {
     // set de mon tableau modifier dans cart
     setCart(cartTmp);
   }
+  const removeAll = (id)=>{
+    console.log("jshdgjhsqg",id)
+    //let trouve = catalogue.find((value)=>value.id === id);
+    let indexDeleteCart = cart.findIndex((value)=>value.id === id)
+    //console.log(trouve.id,trouve.qte)
+    console.log(indexDeleteCart)
+    //traitement catalogue
+    let qteTmp = cart[indexDeleteCart].qte;
+    const catalogueTmp = catalogue.map((value,index)=>{
+      if(value.id === id){
+        value.qte += qteTmp;
+      }
+      return value
+    });
+
+    setCatalogue(catalogueTmp);
+    //traitement cart
+    const cartTmp = cart.map((value)=>{
+      return value
+    });
+    cartTmp.splice(indexDeleteCart,1);
+    setCart(cartTmp); 
+  }
   return (
     <BoutiqueContext.Provider value={{
       catalogue,
       cart,
       addCart: addCart,
-      removeFromCart: removeFromCart
+      removeFromCart: removeFromCart,
+      removeAll: removeAll
     }}>
       <header>
         <MenuBoutique />

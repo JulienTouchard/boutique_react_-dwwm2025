@@ -6,10 +6,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import BoutiqueContext from '../../context/BoutiqueContext';
+import './BoutiqueCard.css'
 
 
 const style = {
-  styleCard: { width: "100%", marginTop: ".5rem", minHeight:740 },
+  styleCard: { width: "100%",  minHeight:740 },
   styleCardMedia: { height: 450 }
 }
 export default function BoutiqueCard(props) {

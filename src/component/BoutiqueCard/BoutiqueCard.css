@@ -1,5 +1,15 @@
 .maCard {
     width: 100%;
+    margin: .5rem 0;
+    -webkit-box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.3);
+    
+}
+.maCard:nth-child(5),.maCard:nth-child(6){
+    margin-right: 1.4%;
+}
+.maCard:last-child{
+    margin-right: auto;
 }
 
 @media screen and (min-width:576px) {
