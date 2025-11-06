@@ -12,7 +12,7 @@ function ArticleCart(props) {
       <div>{values.name}</div>
       <div>{values.price}</div>
       <div style={{ display: 'flex', justifyContent: 'space-between', width:100 }}>
-        <div>-</div>
+        <div onClick={()=>boutiqueContext.removeFromCart(props.item.id)}>-</div>
         <div>{props.item.qte}</div>
         <div onClick={()=>boutiqueContext.addCart(props.item.id)}>+</div>
       </div>
